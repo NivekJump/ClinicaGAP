@@ -1,0 +1,69 @@
+﻿@model PagedList.IPagedList<ClinicaGAP.Models.DataModels.Appointment>
+@using PagedList.Mvc;
+
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Appointments</h2>
+
+@using (Html.BeginForm("Index", "Appointments", FormMethod.Get))
+{
+    <p>
+        Find by name: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+        <input type="submit" value="Search" />
+    </p>
+}
+<table class="table">
+    <tr>
+        <th>
+            @Html.ActionLink("Appointment Date", "Index", new { sortOrder = ViewBag.DateSortParm })
+        </th>
+        <th>
+            @Html.Label("Appointment Type")
+        </th>
+        <th>
+            @Html.ActionLink("Document ID", "Index", new { sortOrder = ViewBag.DocumentIDSortParm })
+        </th>
+        <th>
+            @Html.ActionLink("First Name", "Index", new { sortOrder = ViewBag.FirstNameSortParm })
+        </th>
+        <th>
+            @Html.ActionLink("Last Name", "Index", new { sortOrder = ViewBag.LastNameSortParm })
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.AppointmentDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AppointmentType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Patient.DocumentID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Patient.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Patient.LastName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.AppointmentId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.AppointmentId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.AppointmentId })
+            </td>
+        </tr>
+    }
+
+</table>
+
+<p>
+    @Html.ActionLink("Create a new appointment", "Create", routeValues: null, htmlAttributes: new { title = "Create Appointment", @class = "btn btn-primary" })
+</p>

@@ -1,0 +1,56 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    @if (Request.IsAuthenticated)
+    {
+        <h1>GAP Clinic</h1>
+
+        <p class="lead">Welcome to GAP Clinic! </p>
+
+        <p>GAP Clinic is a reliable and easy to use app that will help you handling the patients and appointments of your clinic</p>
+
+        <div class="row">
+            <div class="col-md-6">
+                <h2>Create Patients</h2>
+                <p>As a valuable health company, just like you, the patients are our top priority, so don't wait anymore, click down below to start creating your patients.</p>
+                <p>@Html.ActionLink("Register Your First Patient >>", "Index", "Patients", routeValues: null, htmlAttributes: new { title = "Patient", @class = "btn btn-default" })</p>
+            </div>
+            <div class="col-md-6">
+                <h2>Make Appointments!</h2>
+                <p>We love to take care of our patients, so don't make them wait any longer, and start showing some love with some new appointments</p>
+                <p>@Html.ActionLink("Create Your First Appointment >>", "Index", "Appointments", routeValues: null, htmlAttributes: new { title = "Appointment", @class = "btn btn-default" })</p>
+            </div>
+        </div>
+
+        <br>
+        <br>
+        <br>
+
+        <p class="lead">To check your account data just click down below: </p>
+
+        <p>@Html.ActionLink("Account >>", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", @class = "btn btn-primary btn-lg" })</p>
+    }
+    else
+    {
+        <h1>GAP Clinic</h1>
+
+        <p class="lead">Welcome to GAP Clinic! </p>
+
+        <p>GAP Clinic is a reliable and easy to use app that will help you handling the patients and appointments of your clinic</p>
+
+        <div class="row">
+            <div class="col-md-6">
+                <p>Be part of our growing community, join now!</p>
+                <p>@Html.ActionLink("Sign Up >>", "Register", "Account", routeValues: null, htmlAttributes: new { title = "Account", @class = "btn btn-primary" })</p>
+            </div>
+            <div class="col-md-6">
+                <p>If you already have an account, what are you waiting? Login now!</p>
+                <p>@Html.ActionLink("Sign In >>", "Login", "Account", routeValues: null, htmlAttributes: new { title = "Account", @class = "btn btn-primary" })</p>
+            </div>
+        </div>
+    }
+
+</div>
+

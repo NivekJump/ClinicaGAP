@@ -1,0 +1,68 @@
+﻿@model ClinicaGAP.Models.DataModels.Appointment
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Appointment Details</h2>
+
+<div>
+    <h4>Patient</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.AppointmentDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AppointmentDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AppointmentType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AppointmentType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Patient.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Patient.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Patient.LastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Patient.LastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Patient.DocumentID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Patient.DocumentID)
+        </dd>
+
+        <dd>Creado Por: </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.User.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.User.Email)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>
